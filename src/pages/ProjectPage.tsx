@@ -1,14 +1,20 @@
 import React from 'react';
-// import ProjectForm from '../components/ProjectForm';
-// import ProjectTable from '../components/ProjectTable';
+import { Box, Container } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import ProjectDetails from '../components/ProjectDetails';
+import ProjectForm from '../components/ProjectForm';
 
 const ProjectPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+
   return (
-    <div className="container">
-      <h1>Projetos</h1>
-      {/* <ProjectForm />
-      <ProjectTable /> */}
-    </div>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Navbar />
+      <Container maxWidth="lg" sx={{ mt: 4 }}>
+        {id ? <ProjectDetails /> : <ProjectForm />}
+      </Container>
+    </Box>
   );
 };
 

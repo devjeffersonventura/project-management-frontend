@@ -32,6 +32,22 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/project/new"
+          element={
+            <PrivateRoute>
+              <ProjectPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/project/:id"
+          element={
+            <PrivateRoute>
+              <ProjectPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
