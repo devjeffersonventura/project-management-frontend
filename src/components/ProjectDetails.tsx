@@ -76,9 +76,7 @@ const ProjectDetails: React.FC = () => {
   const fetchProject = useCallback(async () => {
     if (!id || !token) return;
 
-    try {
-      console.log('Fetching project with id:', id);
-      
+    try { 
       const response = await fetch(`http://localhost:8000/v1/projects/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -92,10 +90,8 @@ const ProjectDetails: React.FC = () => {
       }
 
       const result = await response.json();
-      console.log('Raw API Response:', result);
 
       const projectData = result.data || result;
-      console.log('Project data to be set:', projectData);
 
       setProject(projectData);
     } catch (error) {
@@ -127,14 +123,11 @@ const ProjectDetails: React.FC = () => {
   }, [id, token]);
 
   useEffect(() => {
-    console.log('Effect running with id:', id);
     if (id) {
       fetchProject();
       fetchTasks();
     }
   }, [id, fetchProject, fetchTasks]);
-
-  console.log('Current project state:', project);
 
   if (!project) {
     return <Typography>Carregando projeto...</Typography>;
