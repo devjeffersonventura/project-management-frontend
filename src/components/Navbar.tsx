@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 
+
 const Navbar: React.FC = () => {
   const { user, logout, token } = useAuth();
   const navigate = useNavigate();
@@ -51,7 +52,18 @@ const Navbar: React.FC = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography 
+          variant="h6" 
+          component="div" 
+          sx={{ 
+            flexGrow: 1, 
+            cursor: 'pointer',
+            '&:hover': {
+              opacity: 0.8
+            }
+          }}
+          onClick={() => navigate('/dashboard')}
+        >
           Dashboard
         </Typography>
         <Box>
