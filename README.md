@@ -8,8 +8,6 @@ Este é um aplicativo frontend baseado em React para gerenciar projetos e tarefa
 - [Configuração](#configuração)
 - [Executando a Aplicação](#executando-a-aplicação)
 - [Uso](#uso)
-- [Contribuindo](#contribuindo)
-- [Licença](#licença)
 
 ## Pré-requisitos
 
@@ -56,6 +54,3 @@ Isso iniciará o servidor de desenvolvimento e abrirá a aplicação no seu nave
 - **Gerenciar Projetos**: Você pode criar, editar e excluir projetos. Clique em um projeto para ver seus detalhes e gerenciar tarefas.
 - **Gerenciar Tarefas**: Dentro de cada projeto, você pode adicionar, editar e excluir tarefas.
 
-## Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
