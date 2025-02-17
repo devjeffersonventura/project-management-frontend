@@ -10,7 +10,7 @@ const Dashboard: React.FC = () => {
   return (
     <Box sx={{ p: 3 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-        <Typography variant="h4">Dashboard</Typography>
+        <Typography variant="h4">Projetos</Typography>
         <Button 
           variant="contained" 
           onClick={() => navigate('/project/new')}

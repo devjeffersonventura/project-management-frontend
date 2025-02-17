@@ -61,7 +61,7 @@ const LoginForm: React.FC = () => {
         }}
       >
         <Paper elevation={3} sx={{ p: 4, width: '100%' }}>
-          <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
+          <Typography component="h1" variant="h5" sx={{ mb: 3, display: 'flex', justifyContent: 'center' }}>
             Login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
