@@ -41,6 +41,71 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
+## 🐳 Arquivos de Configuração Docker
+
+### docker-compose.yml
+```yaml
+services:
+  frontend:
+    build:
+      # ATENÇÃO: Altere este caminho para o local do seu projeto
+      context: /caminho/completo/para/seu/projeto
+      dockerfile: docker/frontend/Dockerfile
+    container_name: project_management_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      # ATENÇÃO: Altere este caminho para o local do seu projeto
+      - /caminho/completo/para/seu/projeto:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+
+networks:
+  default:
+    name: app_network
+```
+
+### Dockerfile
+```dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+### Ajustando os Caminhos
+
+1. **Windows**
+```yaml
+context: C:/Users/seu-usuario/projetos/project-management-frontend
+volumes:
+  - C:/Users/seu-usuario/projetos/project-management-frontend:/app
+```
+
+2. **Linux/Mac**
+```yaml
+context: /home/seu-usuario/projetos/project-management-frontend
+volumes:
+  - /home/seu-usuario/projetos/project-management-frontend:/app
+```
+
+### ⚠️ Observações Importantes
+- Use barras normais (/) em vez de barras invertidas (\) no Windows
+- Certifique-se de que os caminhos existem no seu computador
+- Se houver espaços no caminho, use aspas
+- Não use caminhos relativos, sempre use caminhos completos
+
 ## 📦 Dependências
 
 ```bash
