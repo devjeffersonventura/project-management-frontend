@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build:
+      context: C:/Users/jeffe/Documents/Projetos/project-management-frontend
+      dockerfile: docker/frontend/Dockerfile
+    container_name: project_management_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - C:/Users/jeffe/Documents/Projetos/project-management-frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+
+networks:
+  default:
+    name: app_network 
