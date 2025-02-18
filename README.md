@@ -1,56 +1,135 @@
-# Gerenciador de Projetos
+# Gerenciamento de Projetos Frontend
 
-Este é um aplicativo frontend baseado em React para gerenciar projetos e tarefas. Permite que os usuários criem, editem e excluam projetos e tarefas, com uma interface amigável.
+Interface web para gerenciamento de projetos e tarefas desenvolvida com React.
 
-## Índice
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Configuração](#configuração)
-- [Executando a Aplicação](#executando-a-aplicação)
-- [Uso](#uso)
+## 🚀 Tecnologias
 
-## Pré-requisitos
+- React 18
+- TypeScript
+- Docker
+- Material-UI
+- React Router
+- Context API
+- Axios
 
-Antes de começar, certifique-se de que você atendeu aos seguintes requisitos:
-- Você tem o **Node.js** instalado (versão 14 ou superior).
-- Você tem o **npm** (Node Package Manager) instalado.
-- Você tem acesso à API backend (certifique-se de que está em execução).
+## 📋 Pré-requisitos
 
-## Instalação
+- Docker Desktop
+- Git
+- API Backend em execução
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/devjeffersonventura/project-management-frontend.git
-   cd project-management-frontend
-   ```
+## ⚙️ Instalação com Docker
 
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-
-## Configuração
-
-1. **Variáveis de Ambiente**: Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
-   ```env
-   REACT_APP_API_URL=http://localhost:8000/v1
-   ```
-
-2. **Autenticação**: Certifique-se de que a API backend está em execução e acessível. O frontend se comunicará com ela para autenticação e gerenciamento de dados.
-
-## Executando a Aplicação
-
-Para iniciar a aplicação, execute o seguinte comando:
+1. Clone o repositório
 ```bash
-npm start
+git clone https://github.com/devjeffersonventura/project-management-frontend
+cd project-management-frontend
 ```
 
-Isso iniciará o servidor de desenvolvimento e abrirá a aplicação no seu navegador padrão em `http://localhost:3000`.
+2. Configure o ambiente
+```bash
+# Copie o arquivo de ambiente
+cp .env.example .env
+```
 
-## Uso
+3. Construa e inicie os containers
+```bash
+# Construir os containers
+docker-compose build --no-cache
 
-- **Login**: Use o formulário de login para autenticar. Se você não tiver uma conta, pode se registrar na página de registro.
-- **Dashboard**: Após o login, você será redirecionado para o dashboard onde poderá visualizar todos os seus projetos.
-- **Gerenciar Projetos**: Você pode criar, editar e excluir projetos. Clique em um projeto para ver seus detalhes e gerenciar tarefas.
-- **Gerenciar Tarefas**: Dentro de cada projeto, você pode adicionar, editar e excluir tarefas.
+# Iniciar os containers em background
+docker-compose up -d
+```
+
+## 📦 Dependências
+
+```bash
+# Instalar dependências
+docker-compose exec frontend npm install
+```
+
+## 🔧 Serviços Disponíveis
+
+- **Frontend**: http://localhost:3000
+- **API Backend**: http://localhost:8000
+
+## 📦 Comandos Docker Úteis
+
+### Gerenciamento de Containers
+```bash
+# Iniciar containers
+docker-compose up -d
+
+# Parar containers
+docker-compose down
+
+# Ver logs
+docker-compose logs -f
+
+# Reconstruir container após mudanças
+docker-compose up -d --build
+```
+
+## 🔍 Troubleshooting
+
+### Problemas com Node Modules
+```bash
+# Limpar cache do npm
+docker-compose exec frontend npm cache clean --force
+
+# Reinstalar dependências
+docker-compose exec frontend rm -rf node_modules
+docker-compose exec frontend npm install
+```
+
+### Problemas com Build
+```bash
+# Limpar cache do build
+docker-compose exec frontend npm run build:clean
+```
+
+## 🧹 Limpeza
+
+Para remover todos os containers e volumes:
+```bash
+# Parar e remover containers
+docker-compose down
+
+# Remover volumes
+docker-compose down -v
+
+# Remover containers/imagens não utilizados
+docker system prune -a
+```
+
+## 📝 Variáveis de Ambiente
+
+Principais variáveis necessárias no `.env`:
+```env
+REACT_APP_API_URL=http://localhost:8000/v1
+REACT_APP_ENV=development
+```
+
+## 📚 Estrutura do Projeto
+
+```
+src/
+├── components/        # Componentes reutilizáveis
+├── pages/            # Páginas da aplicação
+├── services/         # Serviços e integrações
+├── context/          # Contextos React
+├── hooks/            # Hooks personalizados
+├── types/            # Definições de tipos
+└── utils/            # Funções utilitárias
+```
+
+## 🔒 Autenticação
+
+O frontend utiliza JWT para autenticação com a API. O token é armazenado no localStorage e enviado no header Authorization de todas as requisições.
+
+## 🎨 Estilização
+
+- Material-UI para componentes base
+- Styled-components para customizações
+- Tema personalizado para consistência visual
 
