@@ -187,7 +187,70 @@ src/
 ├── types/            # Definições de tipos
 └── utils/            # Funções utilitárias
 ```
+## 🧪 Testes
 
+Este projeto inclui testes automatizados para os componentes principais. Os testes podem ser executados de duas maneiras:
+
+### Localmente
+
+Para executar os testes em sua máquina local:
+Executar todos os testes
+```bash
+npm test
+```
+Executar testes em modo watch
+```bash
+npm test -- --watch
+```
+
+Executar testes com cobertura
+```bash
+npm test -- --coverage
+```
+
+
+### Com Docker
+
+Para executar os testes em um ambiente Docker isolado:
+Construir e executar os testes
+```bash
+docker-compose run --rm frontend-tests
+```
+
+Executar testes em modo watch
+```bash
+docker-compose run --rm frontend-tests npm test -- --watchAll
+```
+
+### Estrutura dos Testes
+
+Os testes estão organizados na pasta `src/components/__tests__/` e incluem:
+
+- `LoginForm.test.tsx`: Testes do formulário de login
+  - Validação de credenciais
+  - Integração com API
+  - Redirecionamento após login
+
+- `RegisterForm.test.tsx`: Testes do formulário de registro
+  - Validação de campos
+  - Integração com API
+  - Validação de senhas
+  - Redirecionamento após registro
+
+### Cobertura de Testes
+
+Os testes cobrem os principais fluxos da aplicação:
+- Autenticação de usuários
+- Registro de novos usuários
+- Validação de formulários
+- Integração com API
+- Navegação entre páginas
+
+## Tecnologias de Teste
+
+- Jest
+- React Testing Library
+- Docker para ambiente isolado de testes
 ## 🔒 Autenticação
 
 O frontend utiliza JWT para autenticação com a API. O token é armazenado no localStorage e enviado no header Authorization de todas as requisições.
